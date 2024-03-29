@@ -1,0 +1,18 @@
+{
+  "books": [
+    {
+      "id": 1,
+      "title": "Book 1",
+      "description": "Description 1",
+      "Author": "Author 1",
+      "category": "Fiction"
+    },
+    {
+      "id": 2,
+      "title": "Book 2",
+      "description": "Description 2",
+      "Author": "Author 2",
+      "category": "Adventure"
+    }
+  ]
+}
