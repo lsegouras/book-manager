@@ -1,18 +1,32 @@
 {
   "books": [
     {
-      "id": 1,
-      "title": "Book 1",
-      "description": "Description 1",
-      "Author": "Author 1",
-      "category": "Fiction"
-    },
-    {
-      "id": 2,
+      "id": "2",
       "title": "Book 2",
       "description": "Description 2",
-      "Author": "Author 2",
+      "author": "Author 2",
       "category": "Adventure"
+    },
+    {
+      "id": "bf85",
+      "title": "1984",
+      "description": "In 1984, Winston Smith lives in a totalitarian society where Big Brother watches every move. The Party controls all aspects of life, from language to history. Winston works in the Ministry of Truth, rewriting history to fit the Party's narrative. He rebels against the regime by joining the Brotherhood, an underground movement that fights against Big Brother.",
+      "author": "George Orwell",
+      "category": ""
+    },
+    {
+      "id": "0e31",
+      "title": " Treasure Island",
+      "description": "Jim Hawkins is a young boy who lives in an inn with his parents. One day, an old sailor named Billy Bones stays at the inn. Billy has a treasure map and is hunted by pirates. Jim finds the map and, with his friends Dr. Livesey and Squire Trelawney, embarks on an expedition to find the treasure.",
+      "author": "Robert Louis Stevenson",
+      "category": "Adventure"
+    },
+    {
+      "id": "f058",
+      "title": "A Confederacy of Dunces",
+      "description": "Ignatius J. Reilly is an obese, lazy, and self-centered man who lives with his mother in New Orleans. He has a degree in English, but refuses to work and spends his days watching TV, eating junk food, and writing his magnum opus, a masterpiece that will never be finished. Ignatius clashes with everyone he meets, from his mother to his neighbors and even random strangers.",
+      "author": "John Kennedy Toole",
+      "category": "Humor"
     }
   ]
 }

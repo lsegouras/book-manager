@@ -1,46 +1,53 @@
 import React, { useState } from "react";
-import { addBook, editBook } from "./api";
-import { FormContainer, Input, Button } from "./FormStyles";
+import { addBook } from "./api";
+import {
+  FormContainer,
+  InputField,
+  SelectField,
+  SubmitButton,
+  TextArea,
+} from "./FormStyles";
 
-const Form = ({ bookToEdit, onFormSubmit }) => {
-  const [book, setBook] = useState(
-    bookToEdit || { title: "", description: "", author: "", category: "" }
-  );
+const Form = ({ onFormSubmit }) => {
+  const [book, setBook] = useState({
+    title: "",
+    description: "",
+    author: "",
+    category: "",
+  });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (bookToEdit) {
-      await editBook(bookToEdit.id, book);
-    } else {
-      await addBook(book);
-    }
+    await addBook(book);
     onFormSubmit();
+    setBook({ title: "", description: "", author: "", category: "" });
   };
 
   return (
     <FormContainer onSubmit={handleSubmit}>
-      <Input
+      <InputField
         type="text"
         placeholder="Title"
         value={book.title}
         onChange={(e) => setBook({ ...book, title: e.target.value })}
       />
-      <Input
+      <TextArea
         type="text"
         placeholder="Description"
         value={book.description}
         onChange={(e) => setBook({ ...book, description: e.target.value })}
       />
-      <Input
+      <InputField
         type="text"
         placeholder="Author"
         value={book.author}
         onChange={(e) => setBook({ ...book, author: e.target.value })}
       />
-      <select
+      <SelectField
         value={book.category}
         onChange={(e) => setBook({ ...book, category: e.target.value })}
       >
+        <option>Select a Category</option>
         <option value="Fiction">Fiction</option>
         <option value="Humor">Humor</option>
         <option value="Adventure">Adventure</option>
@@ -48,8 +55,8 @@ const Form = ({ bookToEdit, onFormSubmit }) => {
         <option value="History">History</option>
         <option value="Poetry">Poetry</option>
         <option value="Children's">Children's</option>
-      </select>
-      <Button type="submit">{bookToEdit ? "Edit Book" : "Add Book"}</Button>
+      </SelectField>
+      <SubmitButton type="submit">Add Book</SubmitButton>
     </FormContainer>
   );
 };
