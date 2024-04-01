@@ -8,13 +8,8 @@ import {
   TextArea,
 } from "./FormStyles";
 
-const Form = ({ onFormSubmit }) => {
-  const [book, setBook] = useState({
-    title: "",
-    description: "",
-    author: "",
-    category: "",
-  });
+const Form = ({ initialValues, onFormSubmit }) => {
+  const [book, setBook] = useState(initialValues || {});
 
   const handleSubmit = async (e) => {
     e.preventDefault();

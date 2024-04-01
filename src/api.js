@@ -10,8 +10,8 @@ export const addBook = async (book) => {
   return await axios.post(`${API_URL}/books`, book);
 };
 
-export const editBook = async (id, book) => {
-  return await axios.put(`${API_URL}/books/${id}`, book);
+export const editBook = async (id, updatedBook) => {
+  return await axios.put(`${API_URL}/books/${id}`, updatedBook);
 };
 
 export const deleteBook = async (id) => {

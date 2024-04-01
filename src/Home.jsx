@@ -9,14 +9,14 @@ import {
 } from "./HomeStyles.js";
 import Form from "./Form.jsx";
 import { getAllBooks, deleteBook, editBook } from "./api";
+import EditModal from "./EditModal.jsx";
 import { GoTrash } from "react-icons/go";
 import { MdOutlineEdit } from "react-icons/md";
-import { EdiModal } from "./EditModal";
 
 const Home = () => {
   const [books, setBooks] = useState([]);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
-  const [selectedBook] = useState(null);
+  const [selectedBook, setSelectedBook] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -64,7 +64,12 @@ const Home = () => {
               <span className="title"> Category: </span>
               {book.category}
             </div>
-            <EditButton onClick={() => setIsEditModalOpen(true)}>
+            <EditButton
+              onClick={() => {
+                setIsEditModalOpen(true);
+                setSelectedBook(book);
+              }}
+            >
               <MdOutlineEdit />
             </EditButton>
             <DeleteButton onClick={() => handleDelete(book.id)}>
@@ -73,10 +78,12 @@ const Home = () => {
           </ListItem>
         ))}
       </ListContainer>
-      isOpen={isEditModalOpen}
-      onClose={() => setIsEditModalOpen(false)}
-      onEdit={handleEdit}
-      book={selectedBook}
+      <EditModal
+        isOpen={isEditModalOpen}
+        onClose={() => setIsEditModalOpen(false)}
+        onEdit={handleEdit}
+        book={selectedBook || {}}
+      />
     </Container>
   );
 };
