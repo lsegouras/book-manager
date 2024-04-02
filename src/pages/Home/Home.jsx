@@ -7,9 +7,9 @@ import {
   EditButton,
   DeleteButton,
 } from "./HomeStyles.js";
-import Form from "./Form.jsx";
-import { getAllBooks, deleteBook, editBook } from "./api";
-import EditModal from "./EditModal.jsx";
+import Form from "../../components/Form/Form.jsx";
+import { getAllBooks, deleteBook, editBook } from "../../api/api.js";
+import EditModal from "../../components/EditModal/EditModal.jsx";
 import { GoTrash } from "react-icons/go";
 import { MdOutlineEdit } from "react-icons/md";
 
