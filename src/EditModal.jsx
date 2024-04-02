@@ -1,25 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Modal from "react-modal";
 
 Modal.setAppElement("#root");
 
-const EditModal = ({ isOpen, onClose, onEdit, book }) => {
-  const initialValues = book
-    ? {
-        title: book.title,
-        description: book.description,
-        author: book.author,
-        category: book.category,
-      }
-    : {
-        title: "",
-        description: "",
-        author: "",
-        category: "",
-      };
-
-  const [editedBook, setEditedBook] = useState(initialValues);
+const EditModal = ({ isOpen, onClose, onEdit, selectedBook }) => {
+  const [editedBook, setEditedBook] = useState({});
   const [successMessage, setSuccessMessage] = useState("");
+
+  useEffect(() => {
+    if (selectedBook) {
+      setEditedBook(selectedBook);
+    }
+  }, [selectedBook]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -27,7 +19,11 @@ const EditModal = ({ isOpen, onClose, onEdit, book }) => {
   };
 
   const handleFormSubmit = async () => {
-    await onEdit({ ...editedBook, id: book.id });
+    const updatedBook = {
+      ...editedBook,
+      id: selectedBook.id,
+    };
+    await onEdit(updatedBook);
     setSuccessMessage("Changes saved successfully!");
     setTimeout(() => {
       setSuccessMessage("");

@@ -82,7 +82,7 @@ const Home = () => {
         isOpen={isEditModalOpen}
         onClose={() => setIsEditModalOpen(false)}
         onEdit={handleEdit}
-        book={selectedBook || {}}
+        selectedBook={selectedBook}
       />
     </Container>
   );
