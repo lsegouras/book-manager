@@ -50,6 +50,7 @@ const Form = ({ initialValues, onFormSubmit }) => {
         <option value="History">History</option>
         <option value="Poetry">Poetry</option>
         <option value="Children's">Children's</option>
+        <option value="Romance">Romance</option>
       </SelectField>
       <SubmitButton type="submit">Add Book</SubmitButton>
     </FormContainer>

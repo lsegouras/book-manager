@@ -7,6 +7,8 @@ export const Container = styled.div`
   background-color: #f0f0f0;
   border-radius: 8px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 40px;
+  margin-bottom: 40px;
 `;
 
 export const Title = styled.h1`
@@ -14,6 +16,9 @@ export const Title = styled.h1`
   color: #333;
   margin-bottom: 20px;
   text-align: center;
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: 700;
 `;
 
 export const ListContainer = styled.ul`
@@ -22,11 +27,14 @@ export const ListContainer = styled.ul`
 `;
 
 export const ListItem = styled.li`
-  background-color: #fff;
-  border-radius: 4px;
+  background-color: #f9f9f9;
+  border-radius: 6px;
   padding: 10px;
   margin-bottom: 10px;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: 500;
 
   > div {
     margin-bottom: 5px;
@@ -46,11 +54,19 @@ export const ListItem = styled.li`
 export const EditButton = styled.button`
   background-color: #007bff;
   color: #fff;
-  margin-right: 5px;
+  margin: 10px 10px 0 10px;
+  border: none;
+  padding: 5px;
+  font-size: 1rem;
+  border-radius: 4px;
 `;
 
 export const DeleteButton = styled.button`
   background-color: #dc3545;
   color: #fff;
-  margin-right: 5px;
+  margin: 10px 10px 0 10px;
+  border: none;
+  padding: 5px;
+  font-size: 1rem;
+  border-radius: 4px;
 `;

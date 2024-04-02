@@ -1,20 +1,6 @@
 {
   "books": [
     {
-      "title": "Book 02",
-      "description": "Description 02",
-      "author": "Author 02",
-      "category": "Drama",
-      "id": "2"
-    },
-    {
-      "title": "Book 02",
-      "description": "Description 02",
-      "author": "Author 02",
-      "category": "Fiction",
-      "id": "bf85"
-    },
-    {
       "id": "0e31",
       "title": " Treasure Island",
       "description": "Jim Hawkins is a young boy who lives in an inn with his parents. One day, an old sailor named Billy Bones stays at the inn. Billy has a treasure map and is hunted by pirates. Jim finds the map and, with his friends Dr. Livesey and Squire Trelawney, embarks on an expedition to find the treasure.",
@@ -27,6 +13,13 @@
       "description": "Ignatius J. Reilly is an obese, lazy, and self-centered man who lives with his mother in New Orleans. He has a degree in English, but refuses to work and spends his days watching TV, eating junk food, and writing his magnum opus, a masterpiece that will never be finished. Ignatius clashes with everyone he meets, from his mother to his neighbors and even random strangers.",
       "author": "John Kennedy Toole",
       "category": "Humor"
+    },
+    {
+      "id": "a741",
+      "title": "Pride and Prejudice",
+      "description": "Pride and Prejudice is a novel of manners written by Jane Austen in 1813. The story follows the main character, Elizabeth Bennet, as she deals with issues of manners, upbringing, morality, education, and marriage in the society of the landed gentry of early 19th-century England. Elizabeth is the second of five daughters of a country gentleman living near the fictional town of Meryton in Hertfordshire, near London.",
+      "author": "Jane Austen",
+      "category": "Romance"
     }
   ]
 }
