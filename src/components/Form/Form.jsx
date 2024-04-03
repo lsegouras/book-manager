@@ -1,15 +1,20 @@
 import React, { useState } from "react";
-import { addBook } from "../../api/api";
 import { FormContainer, SubmitButton } from "./FormStyles";
 import FormFields from "./FormFields";
+import { useBookContext } from "../../contexts/BookContext";
 
-const Form = ({ initialValues, onFormSubmit }) => {
-  const [book, setBook] = useState(initialValues || {});
+const Form = () => {
+  const { handleAddBook } = useBookContext();
+  const [book, setBook] = useState({
+    title: "",
+    description: "",
+    author: "",
+    category: "",
+  });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await addBook(book);
-    onFormSubmit();
+    await handleAddBook(book);
     setBook({ title: "", description: "", author: "", category: "" });
   };
 

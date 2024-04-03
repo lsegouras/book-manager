@@ -1,3 +1,4 @@
+// EditModal.jsx
 import React, { useState, useEffect } from "react";
 import Modal from "react-modal";
 import {
@@ -12,10 +13,13 @@ import {
   SuccessMessage,
 } from "./EditModalStyles";
 import FormFields from "../Form/FormFields";
+import { useBookContext } from "../../contexts/BookContext";
 
 Modal.setAppElement("#root");
 
-const EditModal = ({ isOpen, onClose, onEdit, selectedBook }) => {
+const EditModal = ({ isOpen, onClose, selectedBook }) => {
+  const { handleEdit } = useBookContext();
+
   const [editedBook, setEditedBook] = useState({});
   const [successMessage, setSuccessMessage] = useState("");
 
@@ -30,11 +34,7 @@ const EditModal = ({ isOpen, onClose, onEdit, selectedBook }) => {
   };
 
   const handleFormSubmit = async () => {
-    const updatedBook = {
-      ...editedBook,
-      id: selectedBook.id,
-    };
-    await onEdit(updatedBook);
+    await handleEdit(editedBook);
     setSuccessMessage("Changes saved successfully!");
     setTimeout(() => {
       setSuccessMessage("");

@@ -1,4 +1,5 @@
-import React from "react";
+// BooksList.jsx
+import React, { useState } from "react";
 import {
   ListContainer,
   ListItem,
@@ -7,8 +8,24 @@ import {
 } from "./ListStyles";
 import { GoTrash } from "react-icons/go";
 import { MdOutlineEdit } from "react-icons/md";
+import { useBookContext } from "../../contexts/BookContext";
+import EditModal from "../../components/EditModal/EditModal";
 
-const BookList = ({ books, onEdit, onDelete }) => {
+const BooksList = () => {
+  const { books, handleDelete } = useBookContext();
+
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [selectedBook, setSelectedBook] = useState(null);
+
+  const handleEditBook = (book) => {
+    setSelectedBook(book);
+    setIsEditModalOpen(true);
+  };
+
+  const handleDeleteBook = (id) => {
+    handleDelete(id);
+  };
+
   return (
     <ListContainer>
       {books.map((book) => (
@@ -29,16 +46,23 @@ const BookList = ({ books, onEdit, onDelete }) => {
             <span className="title"> Category: </span>
             {book.category}
           </div>
-          <EditButton onClick={() => onEdit(book)}>
+          <EditButton onClick={() => handleEditBook(book)}>
             <MdOutlineEdit />
           </EditButton>
-          <DeleteButton onClick={() => onDelete(book.id)}>
+          <DeleteButton onClick={() => handleDeleteBook(book.id)}>
             <GoTrash />
           </DeleteButton>
         </ListItem>
       ))}
+      {isEditModalOpen && (
+        <EditModal
+          isOpen={isEditModalOpen}
+          onClose={() => setIsEditModalOpen(false)}
+          selectedBook={selectedBook}
+        />
+      )}
     </ListContainer>
   );
 };
 
-export default BookList;
+export default BooksList;
