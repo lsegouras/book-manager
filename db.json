@@ -20,6 +20,13 @@
       "description": "Pride and Prejudice is a novel of manners written by Jane Austen in 1813. The story follows the main character, Elizabeth Bennet, as she deals with issues of manners, upbringing, morality, education, and marriage in the society of the landed gentry of early 19th-century England. Elizabeth is the second of five daughters of a country gentleman living near the fictional town of Meryton in Hertfordshire, near London.",
       "author": "Jane Austen",
       "category": "Romance"
+    },
+    {
+      "id": "6e05",
+      "title": "The Very Hungry Caterpillar",
+      "description": "The Very Hungry Caterpillar is a children's picture book by Eric Carle, first published by the World Publishing Company in 1969. The book has been translated into 62 languages and has sold more than 50 million copies worldwide.  The story follows a caterpillar who eats his way through a variety of foods on his way to becoming a butterfly. The book is known for its colorful illustrations and its simple, repetitive text.",
+      "author": "Eric Carle",
+      "category": "Children's"
     }
   ]
 }

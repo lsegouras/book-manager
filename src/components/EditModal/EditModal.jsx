@@ -7,12 +7,11 @@ import {
   ModalContent,
   ModalFooter,
   ModalCloseButton,
-  InputField,
-  SelectField,
   SubmitButton,
   CloseButton,
   SuccessMessage,
 } from "./EditModalStyles";
+import FormFields from "../Form/FormFields";
 
 Modal.setAppElement("#root");
 
@@ -26,9 +25,8 @@ const EditModal = ({ isOpen, onClose, onEdit, selectedBook }) => {
     }
   }, [selectedBook]);
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setEditedBook({ ...editedBook, [name]: value });
+  const handleInputChange = (field, value) => {
+    setEditedBook({ ...editedBook, [field]: value });
   };
 
   const handleFormSubmit = async () => {
@@ -49,49 +47,7 @@ const EditModal = ({ isOpen, onClose, onEdit, selectedBook }) => {
       <ModalContainer>
         <ModalHeader>Edit Book</ModalHeader>
         <ModalContent>
-          <label>Title: </label>
-          <InputField
-            type="text"
-            name="title"
-            value={editedBook.title}
-            onChange={handleInputChange}
-          />
-        </ModalContent>
-        <ModalContent>
-          <label>Description: </label>
-          <InputField
-            type="text"
-            name="description"
-            value={editedBook.description}
-            onChange={handleInputChange}
-          />
-        </ModalContent>
-        <ModalContent>
-          <label>Author: </label>
-          <InputField
-            type="text"
-            name="author"
-            value={editedBook.author}
-            onChange={handleInputChange}
-          />
-        </ModalContent>
-        <ModalContent>
-          <label>Category:</label>
-          <SelectField
-            name="category"
-            value={editedBook.category}
-            onChange={handleInputChange}
-          >
-            <option value="">Select a Category</option>
-            <option value="Fiction">Fiction</option>
-            <option value="Humor">Humor</option>
-            <option value="Adventure">Adventure</option>
-            <option value="Drama">Drama</option>
-            <option value="History">History</option>
-            <option value="Poetry">Poetry</option>
-            <option value="Children's">Children's</option>
-            <option value="Romance">Romance</option>
-          </SelectField>
+          <FormFields book={editedBook} handleInputChange={handleInputChange} />
         </ModalContent>
         <ModalFooter>
           <SubmitButton onClick={handleFormSubmit}>Save Changes</SubmitButton>
