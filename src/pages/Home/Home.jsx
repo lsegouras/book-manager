@@ -1,17 +1,10 @@
+// Home.jsx
 import React, { useState, useEffect } from "react";
-import {
-  Container,
-  Title,
-  ListContainer,
-  ListItem,
-  EditButton,
-  DeleteButton,
-} from "./HomeStyles.js";
+import { Container, Title } from "./HomeStyles.js";
 import Form from "../../components/Form/Form.jsx";
 import { getAllBooks, deleteBook, editBook } from "../../api/api.js";
 import EditModal from "../../components/EditModal/EditModal.jsx";
-import { GoTrash } from "react-icons/go";
-import { MdOutlineEdit } from "react-icons/md";
+import BookList from "../../components/ListContainer/BooksList.jsx";
 
 const Home = () => {
   const [books, setBooks] = useState([]);
@@ -45,39 +38,14 @@ const Home = () => {
     <Container className="Home">
       <Title>Book Manager</Title>
       <Form onFormSubmit={handleFormSubmit} />
-      <ListContainer>
-        {books.map((book) => (
-          <ListItem key={book.id}>
-            <div>
-              <span className="title"> Title: </span>
-              {book.title}
-            </div>
-            <div>
-              <span className="title"> Description: </span>
-              {book.description}
-            </div>
-            <div>
-              <span className="title"> Author: </span>
-              {book.author}
-            </div>
-            <div>
-              <span className="title"> Category: </span>
-              {book.category}
-            </div>
-            <EditButton
-              onClick={() => {
-                setIsEditModalOpen(true);
-                setSelectedBook(book);
-              }}
-            >
-              <MdOutlineEdit />
-            </EditButton>
-            <DeleteButton onClick={() => handleDelete(book.id)}>
-              <GoTrash />
-            </DeleteButton>
-          </ListItem>
-        ))}
-      </ListContainer>
+      <BookList
+        books={books}
+        onEdit={(book) => {
+          setIsEditModalOpen(true);
+          setSelectedBook(book);
+        }}
+        onDelete={handleDelete}
+      />
       <EditModal
         isOpen={isEditModalOpen}
         onClose={() => setIsEditModalOpen(false)}
