@@ -1,5 +1,5 @@
 // EditModal.jsx
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import Modal from "react-modal";
 import {
   ModalOverlay,
@@ -17,17 +17,23 @@ import { useBookContext } from "../../contexts/BookContext";
 
 Modal.setAppElement("#root");
 
-const EditModal = ({ isOpen, onClose, selectedBook }) => {
-  const { handleEdit } = useBookContext();
-
-  const [editedBook, setEditedBook] = useState({});
-  const [successMessage, setSuccessMessage] = useState("");
+const EditModal = () => {
+  const {
+    isEditModalOpen,
+    selectedBook,
+    handleEdit,
+    editedBook,
+    setEditedBook,
+    setSuccessMessage,
+    closeEditModal,
+    successMessage,
+  } = useBookContext();
 
   useEffect(() => {
     if (selectedBook) {
       setEditedBook(selectedBook);
     }
-  }, [selectedBook]);
+  }, [selectedBook, setEditedBook]);
 
   const handleInputChange = (field, value) => {
     setEditedBook({ ...editedBook, [field]: value });
@@ -38,12 +44,12 @@ const EditModal = ({ isOpen, onClose, selectedBook }) => {
     setSuccessMessage("Changes saved successfully!");
     setTimeout(() => {
       setSuccessMessage("");
-      onClose();
+      closeEditModal();
     }, 2000);
   };
 
   return (
-    <ModalOverlay isOpen={isOpen} onRequestClose={onClose}>
+    <ModalOverlay isOpen={isEditModalOpen} onRequestClose={closeEditModal}>
       <ModalContainer>
         <ModalHeader>Edit Book</ModalHeader>
         <ModalContent>
@@ -51,10 +57,10 @@ const EditModal = ({ isOpen, onClose, selectedBook }) => {
         </ModalContent>
         <ModalFooter>
           <SubmitButton onClick={handleFormSubmit}>Save Changes</SubmitButton>
-          <CloseButton onClick={onClose}>Cancel</CloseButton>
+          <CloseButton onClick={closeEditModal}>Cancel</CloseButton>
         </ModalFooter>
         {successMessage && <SuccessMessage>{successMessage}</SuccessMessage>}
-        <ModalCloseButton onClick={onClose}>&times;</ModalCloseButton>
+        <ModalCloseButton onClick={closeEditModal}>&times;</ModalCloseButton>
       </ModalContainer>
     </ModalOverlay>
   );

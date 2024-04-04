@@ -15,6 +15,14 @@ export const BookProvider = ({ children }) => {
   const [books, setBooks] = useState([]);
   const [selectedBook, setSelectedBook] = useState(null);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [successMessage, setSuccessMessage] = useState("");
+  const [editedBook, setEditedBook] = useState("");
+  const [book, setBook] = useState({
+    title: "",
+    description: "",
+    author: "",
+    category: "",
+  });
 
   useEffect(() => {
     const fetchData = async () => {
@@ -56,6 +64,16 @@ export const BookProvider = ({ children }) => {
     setIsEditModalOpen(false);
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await handleAddBook(book);
+    setBook({ title: "", description: "", author: "", category: "" });
+  };
+
+  const handleInputChange = (field, value) => {
+    setBook({ ...book, [field]: value });
+  };
+
   return (
     <BookContext.Provider
       value={{
@@ -69,6 +87,15 @@ export const BookProvider = ({ children }) => {
         openEditModal,
         closeEditModal,
         isEditModalOpen,
+        setIsEditModalOpen,
+        successMessage,
+        setSuccessMessage,
+        editedBook,
+        setEditedBook,
+        book,
+        setBook,
+        handleSubmit,
+        handleInputChange,
       }}
     >
       {children}

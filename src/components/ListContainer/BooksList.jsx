@@ -1,5 +1,5 @@
 // BooksList.jsx
-import React, { useState } from "react";
+import React from "react";
 import {
   ListContainer,
   ListItem,
@@ -12,10 +12,14 @@ import { useBookContext } from "../../contexts/BookContext";
 import EditModal from "../../components/EditModal/EditModal";
 
 const BooksList = () => {
-  const { books, handleDelete } = useBookContext();
-
-  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
-  const [selectedBook, setSelectedBook] = useState(null);
+  const {
+    books,
+    handleDelete,
+    isEditModalOpen,
+    setIsEditModalOpen,
+    selectedBook,
+    setSelectedBook,
+  } = useBookContext();
 
   const handleEditBook = (book) => {
     setSelectedBook(book);
