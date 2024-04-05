@@ -1,35 +1,37 @@
-// FormFields.jsx
 import React from "react";
 import { InputField, SelectField } from "./FormStyles";
+import { useBookContext } from "../../contexts/BookContext";
 
-const FormFields = ({ book, handleInputChange }) => {
+const FormFields = () => {
+  const { editedBook, handleInputChange } = useBookContext();
+
   return (
     <>
       <label>Title: </label>
       <InputField
         type="text"
         name="title"
-        value={book.title}
+        value={editedBook.title}
         onChange={(e) => handleInputChange("title", e.target.value)}
       />
       <label>Description: </label>
       <InputField
         type="text"
         name="description"
-        value={book.description}
+        value={editedBook.description}
         onChange={(e) => handleInputChange("description", e.target.value)}
       />
       <label>Author: </label>
       <InputField
         type="text"
         name="author"
-        value={book.author}
+        value={editedBook.author}
         onChange={(e) => handleInputChange("author", e.target.value)}
       />
       <label>Category:</label>
       <SelectField
         name="category"
-        value={book.category}
+        value={editedBook.category}
         onChange={(e) => handleInputChange("category", e.target.value)}
       >
         <option>Select a Category</option>

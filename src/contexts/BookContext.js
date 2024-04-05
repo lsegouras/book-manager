@@ -71,7 +71,7 @@ export const BookProvider = ({ children }) => {
   };
 
   const handleInputChange = (field, value) => {
-    setBook({ ...book, [field]: value });
+    setEditedBook({ ...editedBook, [field]: value });
   };
 
   return (
