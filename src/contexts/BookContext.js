@@ -1,4 +1,3 @@
-// BookContext.js
 import React, { createContext, useState, useEffect, useContext } from "react";
 import {
   getAllBooks,
@@ -36,6 +35,10 @@ export const BookProvider = ({ children }) => {
     await editBook(updatedBook.id, updatedBook);
     handleFormSubmit();
     closeEditModal();
+    setSuccessMessage("Changes saved successfully!");
+    setTimeout(() => {
+      setSuccessMessage("");
+    }, 2000);
   };
 
   const handleDelete = async (id) => {

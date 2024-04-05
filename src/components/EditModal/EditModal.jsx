@@ -1,4 +1,3 @@
-// EditModal.jsx
 import React, { useEffect } from "react";
 import Modal from "react-modal";
 import {
@@ -24,9 +23,9 @@ const EditModal = () => {
     handleEdit,
     editedBook,
     setEditedBook,
-    setSuccessMessage,
-    closeEditModal,
     successMessage,
+    closeEditModal,
+    handleInputChange,
   } = useBookContext();
 
   useEffect(() => {
@@ -35,17 +34,9 @@ const EditModal = () => {
     }
   }, [selectedBook, setEditedBook]);
 
-  const handleInputChange = (field, value) => {
-    setEditedBook({ ...editedBook, [field]: value });
-  };
-
   const handleFormSubmit = async () => {
     await handleEdit(editedBook);
-    setSuccessMessage("Changes saved successfully!");
-    setTimeout(() => {
-      setSuccessMessage("");
-      closeEditModal();
-    }, 2000);
+    closeEditModal();
   };
 
   return (
